@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <link rel="icon" href="iconbubbletime.png">
+
+</head>
+<title>Bubble Time</title>
+<style>
+
+    body {
+        font-family: system-ui;
+        background: rgb(255, 212, 214);
+    }
+/* header */
+    #header {
+        font-family: 'Pacifico';
+        position: absolute;
+        z-index: 1;
+        font-size: 15px;
+        background: rgb(255, 212, 214);
+        color: white;
+        position: fixed;
+        width: 99%;
+        border: solid 0.3em;
+        border-color: white;
+        top: 0%;
+        left: 0.2%;
+        text-align: center;
+        transition: 0.3s;
+    }
+/* menu */
+    .btn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        font-family: system-ui;
+
+    }
+
+    .dropbtn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        font-family: system-ui;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 191px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        font-size: 16px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgb(255, 212, 214);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: white;
+        color: black;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+
+/* container of the pictures */
+.container {
+  display: flex;
+  width: 100%;
+  padding: 4% 2%;
+  margin-top: 5%;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+/* effects on the pictures */
+.box {
+  flex: 1;
+  overflow: hidden;
+  transition: .5s;
+  margin: 0 2%;
+  box-shadow: 0 20px 30px rgba(0,0,0,.1);
+  line-height: 0;
+}
+
+.box > img {
+  width: 200%;
+  height: calc(100% - 10vh);
+  object-fit: cover; 
+  transition: .5s;
+}
+
+span {
+font-family: 'Pacifico';
+font-size: 10px;
+}
+
+h1 {
+text-align: center;
+}
+
+p {
+font-size: 15px;
+}
+
+.box > span {
+  font-size: 5vh;
+  display: block;
+  text-align: center;
+  height: 10vh;
+  line-height: 2.6;
+  background-color: white;
+}
+
+.box:hover { flex: 1 1 50%; }
+.box:hover > img {
+  width: 100%;
+  height: 100%;
+}
+
+ 
+/* text */
+   #blocktext {
+        background-color: rgb(255, 255, 255);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        width: 70%;
+        margin-top: 1%;
+        margin-right: auto;
+        margin-left: auto;
+	font-size: 15px;
+    }
+/* footer */
+    footer {
+        padding: 3px;
+        background-color: white;
+        font-size: smaller;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    footer .m {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #Facebook,
+    #Instagram,
+    #Twitter, #Mail {
+        width: 50px;
+    }
+
+    #bubbletea {
+        color: #ff8742 ;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    /*Animation on the text*/
+    h2{
+        text-align: center;
+    }
+    #flip {
+        height: 50px;
+        overflow: hidden;
+       text-align: center;
+    }
+
+    #flip>div>div {
+        color: #fff;
+        padding: 4px 12px;
+        height: 45px;
+        margin-bottom: 45px;
+        display: inline-block;
+    }
+
+    #flip div:first-child {
+        animation: show 5s linear infinite;
+    }
+
+    #flip div:first-child div {
+        background: #EAEBFF;
+    }
+
+    #flip div div {
+        background: #FEBCC8;
+    }
+
+    #flip div:last-child div {
+        background: #D3EEFF;
+    }
+
+    @keyframes show {
+        0% {
+            margin-top: -270px;
+        }
+
+        5% {
+            margin-top: -180px;
+        }
+
+        33% {
+            margin-top: -180px;
+        }
+
+        38% {
+            margin-top: -90px;
+        }
+
+        66% {
+            margin-top: -90px;
+        }
+
+        71% {
+            margin-top: 0px;
+        }
+
+    }
+
+/* tapioca pearl */
+    #circle {
+      width: 25px;
+      height: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: black;
+    }
+</style>
+
+<body>
+<!-- header -->
+    <div id="header">
+        <h2>Bubble Time</h2>
+<!-- menu -->
+        <div class="dropdown">
+            <button class="dropbtn">What is a bubble tea ?</button>
+            <div class="dropdown-content">
+                <a href="history.html">History</a>
+                <a href="atypique.html">Atypical bubble tea</a>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href = 'bubbletime2.0.html'">Home</button>
+        <div class="dropdown">
+            <button class="dropbtn">Taste it !</button>
+            <div class="dropdown-content">
+                <a href="rec.html">Recommendations</a>
+                <a href="recette.html">Bubble tea recipe</a>
+                <a href="santé.html">Health</a>
+            </div>
+        </div>
+
+    </div>
+<!-- pictures -->
+    <div class="container">
+  <div class="box">
+    <img src="bubblepizza.jpg">
+    <span>Pizza</span>
+  </div>
+  <div class="box">
+    <img src="bubblehotpot.jpg">
+    <span>Hotpot</span>
+  </div>
+  <div class="box">
+    <img src="bubblesandwich.jpg">
+    <span>Sandwich</span>
+  </div>
+  <div class="box">
+    <img src="bubblecroissant.jpg">
+    <span>Croissant</span>
+  </div>
+  <div class="box">
+    <img src="bubbletarts.jpg">
+    <span>Tart</span>
+  </div>
+     </div>
+
+     <!-- main content -->
+    <div id="blocktext">
+<!-- animated text -->
+        <h1><div id="flip">
+                <div>
+                    <div>Atypical</div>
+                </div>
+                <div>
+                    <div>Weird</div>
+                </div>
+                <div>
+                    <div>Unique</div>
+                </div>
+            </div>
+        Bubble Tea</h1>
+
+	<p><b>"Weird"</b>, <b>"strange"</b>, <b>"atypical"</b> or simply <b>"why?"</b> are the words that could come to your mind when seeing those different <b>bubble tea creations</b> above
+	however, they do exist and can actually be to your taste if you already like bubble tea in general.</p><br>
+	<p>The <b>bubble tea pizza</b> can be found in Canada, consisting of tapioca dough, mozzarella cheese, topped with brown sugar and a condensed milk glaze.
+	It's a new take on the <b>sweet and salty</b> combo that many people like!</p> 
+	<p>The <b>bubble tea hotpot</b> can also be found in Canada, however hotpot is a <b>chinese cooking method</b> that is very famous across Asia. It consists of gathering 
+	many people around a single pot where everyone will cook food like meat and mushrooms into a broth. Here the hotpot is sugary, grass jelly, mochi taro balls, 
+	sago and copious amounts of milk tea. It can be served warm or cold so it can good for <b>any time of the year</b> to eat a dessert with many friends</p>
+	<p>You might be more familiar with the traditional croissant found in any bakery is France however, it's in Singapore that can be found the <b>croissant 
+	bubble tea</b>! This flakey-buttery creation enveloping a gooey taro centre is very well liked and shows a new side of the traditional day to day croissant.</p>
+	<p>The <b>bubble tea sandwich</b> found in California is a crispy exterior encasing the boba and condensed milk for <b>creamy crunches</b> in every bite. A good snack to eat on the go, 
+	it can surely become your new favorite <b>guilty pleasure</b> if you just try a bite!</p>
+	<p>The <b>bubble tea tarts</b> can be found in Singapore, they consist of <b>buttercream cakes</b> customised with sugary boba on the top. It's a new type of tart 
+	that can change you from the usual strawberry or raspberry one.</p><br>
+	<p>Surely you might not want to travel around the world only to eat bubble tea in its various forms however, you can easily see the many ways that bubble tea
+	can be customised in order to eat and discover this very well liked trend. And if one of these ideas raises your interest why not <b>try to make it at home?</b></p>
+	<div id="circle" onclick="showBubble()"></div>
+	<div id="resultat"></div>
+	<div id="resultat1"></div>
+</div>
+<!-- footer -->
+    <footer>
+        <div class="m">
+            <p>© 2020 Bubble Time</p>
+            <p>Blondin Tahiti - Dufour Lucie <br> Projet Programmation Web <br> Efrei Paris 2020</p>
+        </div>
+        <div class="m">
+            <p>
+                <a href="Who are we.html">Who are we ?</a>
+            </p>
+            <nav>
+                <a href=""><img src="icon_facebook.webp" alt="Facebook" id="Facebook"></a>
+                <a href=""><img src="twitter.png" alt="Twitter" id="Twitter"></a>
+                <a href=""><img src="instagram.png" alt="Instagram" id="Instagram"></a>
+                <a href="mailto:bubbletime@gmail.com"><img src="Circle-icons-mail.png" alt="mail" id="Mail"></a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+// animation on the header
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("header").style.fontSize = "15px";
+            } else {
+                document.getElementById("header").style.fontSize = "30px";
+            }
+        }
+
+// functions for the tapioca pearl game
+		function showBubble() {
+			bobaCounter();
+			document.getElementById("circle").style.display = "none";
+		}
+
+		function bobaCounter() {
+  			if (typeof(Storage) !== "undefined") {
+    				if (sessionStorage.clickcount && sessionStorage.clickcount<5) {
+      					sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+      					document.getElementById("resultat").innerHTML = "You have found " + sessionStorage.clickcount + " boba pearl(s) out of 5.";
+					if(sessionStorage.clickcount==5) {
+						 document.getElementById("resultat1").innerHTML = "You have found all you boba! The secret code is: emit";
+					}
+    				} else {
+      					sessionStorage.clickcount = 0;
+    				}
+  			} else {
+    				document.getElementById("resultat").innerHTML = "Sorry, your browser does not support web storage...";
+  			}
+		}
+
+    </script>
+</body>

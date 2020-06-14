@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link rel="icon" href="iconbubbletime.png">
+
+</head>
+<title>Bubble Time</title>
+<style>
+    body {
+        font-family: system-ui;
+        background: rgb(255, 212, 214);
+    }
+
+    /* main container of the page */
+    #histoire {
+        background-color: rgb(255, 255, 255);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        width: 70%;
+        margin-top: 20%;
+        margin-right: auto;
+        margin-left: auto;
+        font-size: 15px;
+    }
+
+    /* effect on the title */
+    #bubbletea {
+        color: #ff8742;
+        font-family: 'Pacifico';
+    }
+
+    /* header */
+    #header {
+        font-family: 'Pacifico';
+        position: absolute;
+        z-index: 1;
+        font-size: 15px;
+        background: rgb(255, 212, 214);
+        color: white;
+        position: fixed;
+        width: 99%;
+        border: solid 0.3em;
+        border-color: white;
+        top: 0%;
+        left: 0.2%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    /* menu */
+    .btn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        font-family: system-ui;
+
+    }
+
+    .dropbtn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        font-family: system-ui;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 191px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        font-size: 16px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgb(255, 212, 214);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: white;
+        color: black;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+
+
+    /*Animation on the text*/
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    #flip {
+        height: 50px;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    #flip>div>div {
+        color: #fff;
+        padding: 4px 12px;
+        height: 45px;
+        margin-bottom: 45px;
+        display: inline-block;
+    }
+
+    #flip div:first-child {
+        animation: show 5s linear infinite;
+    }
+
+    #flip div:first-child div {
+        background: #b6708f;
+    }
+
+    #flip div div {
+        background: #ff8742;
+    }
+
+    #flip div:last-child div {
+        background: rgb(128, 87, 161);
+    }
+
+    @keyframes show {
+        0% {
+            margin-top: -270px;
+        }
+
+        5% {
+            margin-top: -180px;
+        }
+
+        33% {
+            margin-top: -180px;
+        }
+
+        38% {
+            margin-top: -90px;
+        }
+
+        66% {
+            margin-top: -90px;
+        }
+
+        71% {
+            margin-top: 0px;
+        }
+
+    }
+
+    /* video youtube  */
+    #video {
+        text-align: center;
+    }
+
+    /* catchphrase at the end */
+    #catchphrase {
+        color: #ff8742;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* footer */
+    footer {
+        padding: 3px;
+        background-color: white;
+        font-size: smaller;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    footer .m {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #Facebook,
+    #Instagram,
+    #Twitter,
+    #Mail {
+        width: 50px;
+    }
+
+    /* tapioca pearl */
+    #circle {
+        width: 25px;
+        height: 25px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        background: black;
+    }
+</style>
+
+
+<body>
+    <!-- header -->
+    <div id="header">
+        <h2>Bubble Time</h2>
+        <!-- menu -->
+        <div class="dropdown">
+            <button class="dropbtn">What is a bubble tea ?</button>
+            <div class="dropdown-content">
+                <a href="history.html">History</a>
+                <a href="atypique.html">Atypical bubble tea</a>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href = 'bubbletime2.0.html'">Home</button>
+        <div class="dropdown">
+            <button class="dropbtn">Taste it !</button>
+            <div class="dropdown-content">
+                <a href="rec.html">Recommendations</a>
+                <a href="recette.html">Bubble tea recipe</a>
+                <a href="santé.html">Health</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- main content -->
+    <div id="histoire">
+        <h1>Where does <span id="bubbletea">Bubble tea</span> come from ?</h1>
+        <!-- animated text -->
+        <h2>Also known as <div id="flip">
+                <div>
+                    <div>Pearl Tea</div>
+                </div>
+                <div>
+                    <div>Boba Tea</div>
+                </div>
+                <div>
+                    <div>Tapioca Tea</div>
+                </div>
+            </div>
+        </h2>
+        <p>Since early 2010's, we can see more and more little shop offering bubble tea around the western
+            countries.<br> Then, maybe you ask yourself <b>"Where do this trend come from ?"</b>
+            <br>It's origin is from Tawain, and it's already started a long time ago, in the 1980's. <br>Let's see this
+            <b>video below</b> which explain the entire history of the Bubble tea and its <b>incredible rise in
+                popularity</b> since 10 years.</p>
+        <!-- youtube video -->
+        <div id="video">
+            <iframe width="510" height="265" src="https://www.youtube.com/embed/CQHD917D8zM" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <div id="catchphrase">
+            <br>
+            Are you ready to join the trend ?
+            <br>
+        </div>
+        <!-- tapioca pearl -->
+        <div id="circle" onclick="showBubble()"></div>
+        <div id="resultat"></div>
+        <div id="resultat1"></div>
+    </div>
+    <!-- footer -->
+    <footer>
+        <div class="m">
+            <p>© 2020 Bubble Time</p>
+            <p>Blondin Tahiti - Dufour Lucie <br> Projet Programmation Web <br> Efrei Paris 2020</p>
+        </div>
+        <div class="m">
+            <p>
+                <a href="Who are we.html">Who are we ?</a>
+            </p>
+            <nav>
+                <a href=""><img src="icon_facebook.webp" alt="Facebook" id="Facebook"></a>
+                <a href=""><img src="twitter.png" alt="Twitter" id="Twitter"></a>
+                <a href=""><img src="instagram.png" alt="Instagram" id="Instagram"></a>
+                <a href="mailto:bubbletime@gmail.com"><img src="Circle-icons-mail.png" alt="mail" id="Mail"></a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // animation on the header
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("header").style.fontSize = "15px";
+            } else {
+                document.getElementById("header").style.fontSize = "30px";
+            }
+        }
+
+        // functions for the tapioca pearl game 
+        function showBubble() {
+            bobaCounter();
+            document.getElementById("circle").style.display = "none";
+        }
+
+        function bobaCounter() {
+            if (typeof (Storage) !== "undefined") {
+                if (sessionStorage.clickcount && sessionStorage.clickcount < 5) {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+                    document.getElementById("resultat").innerHTML = "You have found " + sessionStorage.clickcount + " boba pearl(s) out of 5.";
+                    if (sessionStorage.clickcount == 5) {
+                        document.getElementById("resultat1").innerHTML = "You have found all you boba! The secret code is: emit";
+                    }
+                } else {
+                    sessionStorage.clickcount = 0;
+                }
+            } else {
+                document.getElementById("resultat").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+
+    </script>
+</body>

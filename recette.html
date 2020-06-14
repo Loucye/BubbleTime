@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link rel="icon" href="iconbubbletime.png">
+
+</head>
+<title>Bubble Time</title>
+<style>
+    body {
+        font-family: system-ui;
+        background: rgb(255, 212, 214);
+        display: block;
+    }
+
+    /* main content */
+    #blockrecipe {
+        background-color: rgb(255, 255, 255);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        width: 70%;
+        margin-top: 20%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    #header {
+        font-family: 'Pacifico';
+        position: absolute;
+        z-index: 1;
+        font-size: 15px;
+        background: rgb(255, 212, 214);
+        color: white;
+        position: fixed;
+        width: 99%;
+        border: solid 0.3em;
+        border-color: white;
+        top: 0%;
+        left: 0.2%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    /* menu */
+    .btn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        font-family: system-ui;
+
+    }
+
+    .dropbtn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        font-family: system-ui;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 191px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        font-size: 16px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgb(255, 212, 214);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: white;
+        color: black;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+
+    #recipe {
+        color: rgb(128, 87, 161);
+        font-family: 'Pacifico';
+    }
+
+    /* style of the picture */
+    .image {
+        position: relative;
+    }
+
+    .image img {
+        display: block;
+        max-width: 60%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    /* animation on the picture */
+    .overlay {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgb(128, 87, 161);
+        overflow: hidden;
+        width: 60%;
+        height: 0;
+        transition: .5s ease;
+    }
+
+    .image:hover .overlay {
+        height: 100%;
+    }
+
+    /* conception of the main contain */
+    .text {
+        white-space: nowrap;
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+    .informations h2 {
+        padding-left: 235px;
+    }
+
+    .informations table {
+        margin-bottom: 25px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .informations th {
+        color: white;
+        background-color: rgb(128, 87, 161);
+    }
+
+    .informations th,
+    td {
+        padding-right: 20px;
+    }
+
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 15px;
+    }
+
+    .ingredients {
+        padding-left: 50px;
+        padding-right: 50px;
+        border-left: solid 1px grey;
+        border-top: solid 1px grey;
+        border-bottom: solid 1px grey;
+        /* list-style: url('bubbleteasvg130x30.png'); */
+
+
+    }
+
+    .ingredients li {
+        position: relative;
+        list-style-type: none;
+        padding-bottom: 10px;
+        text-align: left;
+    }
+
+    .ingredients li:before {
+        content: " ";
+        position: absolute;
+        top: 1px;
+        left: -30px;
+        width: 30px;
+        height: 30px;
+        background-image: url('bubbleteasvg130x30.png');
+        background-repeat: no-repeat;
+    }
+
+    .preparation li {
+        margin: 1em 0;
+        list-style: none;
+        padding-right: 40px;
+        text-align: justify;
+
+    }
+
+    /* conception des puces de la liste */
+    .preparation li:before {
+        content: counter(list-counter);
+        counter-increment: list-counter;
+        width: 0.5em;
+        height: 0.5em;
+        padding-bottom: 1em;
+        padding-right: 0.5em;
+        padding-left: 0.4em;
+        margin-right: 1em;
+        border-radius: 50%;
+        border: .1em solid #ccc;
+        background: rgb(128, 87, 161);
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .preparation {
+        padding-left: 50px;
+        padding-right: 50px;
+        border: solid 1px grey;
+        counter-reset: list-counter;
+    }
+
+    /* footer */
+    footer {
+        padding: 3px;
+        background-color: white;
+        font-size: smaller;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    footer .m {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #Facebook,
+    #Instagram,
+    #Twitter,
+    #Mail {
+        width: 50px;
+    }
+
+    /* tapioca pearl */
+    #circle {
+        width: 25px;
+        height: 25px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        background: black;
+    }
+</style>
+
+<body>
+
+    <!-- header part -->
+    <div id="header">
+        <h2>Bubble Time</h2>
+        <!-- menu -->
+        <div class="dropdown">
+            <button class="dropbtn">What is a bubble tea ?</button>
+            <div class="dropdown-content">
+                <a href="History.html">History</a>
+                <a href="atypique.html">Atypical bubble tea</a>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href = 'bubbletime2.0.html'">Home</button>
+        <div class="dropdown">
+            <button class="dropbtn">Taste it !</button>
+            <div class="dropdown-content">
+                <a href="rec.html">Recommendations</a>
+                <a href="recette.html">Bubble tea recipe</a>
+                <a href="santé.html">Health</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- main container -->
+    <div id="blockrecipe">
+        <h1>Bubble tea<span id="recipe"> recipe</span> : </h1>
+        <div class="image">
+            <img src="imgbubbletearecipe.jpg" alt="Bubbletea-img">
+            <div class="overlay">
+                <div class="text">Brown Sugar Bubble tea</div>
+            </div>
+        </div>
+        <!-- table of information -->
+        <div class="informations">
+            <h2>Informations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Difficulty</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Preparation</th>
+                        <th>Cooking</th>
+                        <th>Rest time</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>Easy</td>
+                    <td>2 persons</td>
+                    <td>Cheap</td>
+                    <td>5 mins</td>
+                    <td>20 mins</td>
+                    <td>30 mins</td>
+                </tr>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- list of ingredients -->
+        <div class="container">
+            <div class="ingredients">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>2 cups of water (480 g)</li>
+                    <li>6 black tea bags</li>
+                    <li>1/2 cup medium black tapioca pearls (50 g)</li>
+                    <li>2 cups brown sugar (440 g)</li>
+                    <li>1 cup hot water (240 ml)</li>
+                    <li>2 wide-opening straws</li>
+                </ul>
+            </div>
+            <!-- list of steps for the preparation -->
+            <div class="preparation">
+                <h2>Preparation</h2>
+                <ul>
+                    <li>In a medium pot over high heat, combine the water and tea bags. Bring to a boil, then remove the
+                        pan from the heat and let the tea cool to room temperature.</li>
+                    <li>Bring a medium pot of water to boil over high heat. Once the water is boiling, add the tapioca
+                        pearls and boil until softened, about 20 minutes.</li>
+                    <li>Drain the pearls through a strainer</li>
+                    <li>Set the strainer with the pearls over a medium bowl. Add the brown sugar to the strainer and
+                        pour the hot water over.</li>
+                    <li>Stir to dissolve the brown sugar. Soak the pearls in brown sugar syrup for 30 minutes, then
+                        store the bubbles and syrup separately until ready to serve.</li>
+                    <li>Assemble the tea: Divide the pearls and ice between 2 glasses, then add the brown sugar syrup,
+                        tea, and half and half.</li>
+                    <li>Stir with a wide-opening straw, then serve.</li>
+                    <li>Enjoy!</li>
+                </ul>
+            </div>
+        </div>
+        <!-- tapioca pearl -->
+        <div id="circle" onclick="showBubble()"></div>
+        <div id="resultat"></div>
+        <div id="resultat1"></div>
+    </div>
+    <!-- footer -->
+    <footer>
+        <div class="m">
+            <p>© 2020 Bubble Time</p>
+            <p>Blondin Tahiti - Dufour Lucie <br> Projet Programmation Web <br> Efrei Paris 2020</p>
+        </div>
+        <div class="m">
+            <p>
+                <a href="Who are we.html">Who are we ?</a>
+            </p>
+            <nav>
+                <a href=""><img src="icon_facebook.webp" alt="Facebook" id="Facebook"></a>
+                <a href=""><img src="twitter.png" alt="Twitter" id="Twitter"></a>
+                <a href=""><img src="instagram.png" alt="Instagram" id="Instagram"></a>
+                <a href="mailto:bubbletime@gmail.com"><img src="Circle-icons-mail.png" alt="mail" id="Mail"></a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // animation on the header
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("header").style.fontSize = "15px";
+            } else {
+                document.getElementById("header").style.fontSize = "30px";
+            }
+        }
+
+// functions for the tapioca game pearl
+        function showBubble() {
+            bobaCounter();
+            document.getElementById("circle").style.display = "none";
+        }
+
+        function bobaCounter() {
+            if (typeof (Storage) !== "undefined") {
+                if (sessionStorage.clickcount && sessionStorage.clickcount < 5) {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+                    document.getElementById("resultat").innerHTML = "You have found " + sessionStorage.clickcount + " boba pearl(s) out of 5.";
+                    if (sessionStorage.clickcount == 5) {
+                        document.getElementById("resultat1").innerHTML = "You have found all you boba! The secret code is: emit";
+                    }
+                } else {
+                    sessionStorage.clickcount = 0;
+                }
+            } else {
+                document.getElementById("resultat").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+
+    </script>
+</body>

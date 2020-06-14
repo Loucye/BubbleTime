@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <link rel="icon" href="iconbubbletime.png">
+
+</head>
+<title>Bubble Time</title>
+<style>
+    body {
+        font-family: system-ui;
+        background: rgb(255, 212, 214);
+        font-size: 20px;
+
+    }
+
+
+
+    #header {
+        font-family: 'Pacifico';
+        position: absolute;
+        z-index: 1;
+        font-size: 15px;
+        background: rgb(255, 212, 214);
+        color: white;
+        position: fixed;
+        width: 99%;
+        border: solid 0.3em;
+        border-color: white;
+        top: 0%;
+        left: 0.2%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    /* menu */
+    .btn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        font-family: system-ui;
+
+    }
+
+    .dropbtn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        font-family: system-ui;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 191px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        font-size: 16px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgb(255, 212, 214);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: white;
+        color: black;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+
+
+    /* footer part */
+    footer {
+        padding: 3px;
+        background-color: white;
+        font-size: smaller;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    footer .m {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #Facebook,
+    #Instagram,
+    #Twitter,
+    #Mail {
+        width: 50px;
+    }
+
+
+    /* principal container */
+    #blocktext {
+        background-color: rgb(255, 255, 255);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        width: 70%;
+        margin-top: 20%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        font-size: 15px;
+
+    }
+
+    /* rectangle of the result of the form */
+    #rectangle {
+        background-color: rgb(255, 212, 214);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 60%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        color: white;
+
+    }
+
+    .contain {
+        position: relative;
+        width: 50%;
+    }
+
+    .block {
+        display: flex;
+        text-align: center;
+    }
+
+    .picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* animation on pictures */
+    .overlay {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+        background-color: #CAA7BD;
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+        transition: .5s ease;
+    }
+
+    .contain:hover .overlay {
+        bottom: 0;
+        height: 100%;
+    }
+
+    .text {
+        color: white;
+        font-size: 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 25px;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+
+    #health {
+        color: #aa97ff;
+        font-family: 'Pacifico';
+    }
+
+    /* Conception of the form */
+    #formUser {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    input,
+    select {
+        width: 120px;
+        height: 40px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 0;
+        margin: 10px;
+        box-shadow: 3px 3px 2px 1px whitesmoke;
+    }
+
+    /* if the form is not correctly filled */
+    input:invalid {
+        box-shadow: 3px 3px 2px 1px #E6A99F;
+        caret-color: red;
+    }
+
+
+    select:invalid {
+        box-shadow: 3px 3px 2px 1px #E6A99F;
+        caret-color: red;
+    }
+
+
+    input,
+    select:valid {
+        box-shadow: 3px 3px 2px 1px #CFD7C0;
+    }
+
+    #buttonValidation {
+        box-shadow: 3px 3px 2px 1px #E5CAAF;
+        text-transform: uppercase;
+        background: white;
+        border-radius: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    #buttonValidation:hover {
+        background: #E5CAAF;
+        font-weight: bold;
+
+    }
+
+    /* tapioca pearl */
+    #circle {
+        width: 25px;
+        height: 25px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        background: black;
+    }
+</style>
+
+<body onload="hideResult()">
+    <!-- header part -->
+    <div id="header">
+        <h2>Bubble Time</h2>
+        <!-- menu -->
+        <div class="dropdown">
+            <button class="dropbtn">What is a bubble tea ?</button>
+            <div class="dropdown-content">
+                <a href="History.html">History</a>
+                <a href="atypique.html">Atypical bubble tea</a>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href = 'bubbletime2.0.html'">Home</button>
+        <div class="dropdown">
+            <button class="dropbtn">Taste it !</button>
+            <div class="dropdown-content">
+                <a href="rec.html">Recommendations</a>
+                <a href="recette.html">Bubble tea recipe</a>
+                <a href="santé.html">Health</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- main div of the page -->
+    <div id="blocktext">
+
+        <h1 id=""><span id="health">Health</span> and Bubble Tea</h1>
+        <p>Bubble tea is sweet, tasty and chewy but it's not because it includes <b>"tea"</b> that it means it's a
+            healthy drink. Or that you should be drinking it on a
+            daily basis. Often, these drinks are loaded with <b>sweetners</b> and <b>artificial flavors</b>, so here
+            some answers to questions you might ask yourself before diving deep into the Bubble tea craze.
+        <p>
+        <div class="block">
+            <div class="contain">
+                <img src="pastel1.jpg" class="picture">
+                <div class="center">Is Bubble Tea <b>bad</b> for your health?</div>
+                <!-- appears after the animation -->
+                <div class="overlay">
+                    <div class="text">Bubble tea is not "bad" for your health if you choose the <b>right ingredients</b>
+                        and avoid adding <b>too much sugar</b> that can
+                        increase the number of calories. To avoid this it is advisable to make it at home to be aware of
+                        the ingredients inside what you drink, and for example choose
+                        green tea that could <b>strengthen your immune system</b>.</div>
+                </div>
+            </div>
+            <div class="contain">
+                <img src="pastel2.jpg" class="picture">
+                <div class="center">Is Bubble tea <b>fattening</b>?</div>
+                <div class="overlay">
+                    <!-- appears after the animation -->
+                    <div class="text">Yes, it is fattening. It is mainly due to the sugar contained in the drink. On
+                        average, a cup of bubble tea
+                        contains 20 teaspoons of sugar while it is recommended to take no more than eight teaspoons of
+                        sugar a day for a normal healthy adult.</div>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <div class="contain">
+                <img src="pastel3.jpg" class="picture">
+                <div class="center">Does Bubble Tea have any <b>nutritional value</b> at all?</div>
+                <div class="overlay">
+                    <!-- appears after the animation -->
+                    <div class="text">Sugar is what we call an <b>“empty calorie”</b> food, it only contains calories,
+                        and has no other nutritional value. So since Bubble Tea is a high-sugar beverage it has <b>no
+                            nutritional value</b>.
+                        Consuming too much milk from bubble tea should also be avoided, because milk with sugar is not
+                        the same as pure milk.</div>
+                </div>
+            </div>
+            <div class="contain">
+                <img src="pastel4.jpg" class="picture">
+                <div class="center">Are the tapioca pearls <b>dangerous</b>?</div>
+                <div class="overlay">
+                    <!-- appears after the animation -->
+                    <div class="text">It is not dangerous but you should be careful as the boba alone is <b>150
+                            calories</b>. Those little pearls also contain
+                        starchy carbs—and not the nutritious one. There was an accident in China where a 14 years old
+                        girl had been constipated with
+                        painful stomach pains, because she had <b>about a hundred</b> boba in her abdomen that hadn't
+                        been digested, mostly due to the excessive drinking of this beverage.</div>
+                </div>
+            </div>
+        </div>
+        <!-- "A vous de jouer" part -->
+        <h2 id="">You want more information on your <span id="health">calorie intake</span>?</h2>
+        <p>Fill out the form to find out how much calorie you're gaining from your bubble tea drinking:</p>
+        <!-- form -->
+        <form id="formUser" onsubmit="return false">
+            <div class="flex">
+                <input type="number" min="100" placeholder="Height in cm" id="height" name="userHeight" step="1"
+                    onkeypress="return isNumberKey(event)" required>
+                <input type="number" min="20" placeholder="Weight in kg" id="weight" name="userWeight" step="0.5"
+                    onkeypress="return isNumberKey(event)" required>
+                <input type="number" onkeypress="return isNumberKey(event)" min="5" placeholder="Age" id="age"
+                    name="userAge" step="1" onkeypress="return isNumberKey(event)" required>
+                <select id="genre" name="userGenre" required>
+                    <option value="" selected disabled>Genre</option>
+                    <option value="1">Woman</option>
+                    <option value="2">Man</option>
+                </select>
+                <select id="sport" name="userSport" required>
+                    <option value="" selected disabled>Activity</option>
+                    <option value="1">Not active</option>
+                    <option value="2">A bit active</option>
+                    <option value="3">Active</option>
+                    <option value="4">Very active</option>
+                </select>
+                <input type="number" id="quantity" name="drinkQuantity" placeholder="Quantity 1=100ml" step="1"
+                    onkeypress="return isNumberKey(event)" required>
+
+            </div>
+
+        </form>
+        <input type="button" id="buttonValidation" value="Calculate" onclick="submitForm()" />
+
+        <!-- results -->
+        <div id="rectangle">
+            <div id="finalResult">
+                <p>Your daily calorie intake should be of : <span id="demo"></span> Kcals</p>
+                <p>Your Bubble Tea drinking : <span id="demo1"></span> Kcals</p>
+                <p>Maximum added sugar for you :<span id="cinq"></span>-<span id="dix"></span>Kcals</p>
+            </div>
+        </div>
+        <!-- tapioca pearl -->
+        <div id="circle" onclick="showBubble()"></div>
+        <div id="resultat"></div>
+        <div id="resultat1"></div>
+    </div>
+    <footer>
+        <!-- div of class "m" are the columns of the footer -->
+        <div class="m">
+            <p>© 2020 Bubble Time</p>
+            <p>Blondin Tahiti - Dufour Lucie <br> Projet Programmation Web <br> Efrei Paris 2020</p>
+        </div>
+        <div class="m">
+            <!-- link to the page "qui sommes nous" -->
+            <p>
+                <a href="Who are we.html">Who are we ?</a>
+            </p>
+            <!-- Our social media-->
+            <nav>
+                <a href=""><img src="icon_facebook.webp" alt="Facebook" id="Facebook"></a>
+                <a href=""><img src="twitter.png" alt="Twitter" id="Twitter"></a>
+                <a href=""><img src="instagram.png" alt="Instagram" id="Instagram"></a>
+                <a href="mailto:bubbletime@gmail.com"><img src="Circle-icons-mail.png" alt="mail" id="Mail"></a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // animation on the header
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("header").style.fontSize = "15px";
+            } else {
+                document.getElementById("header").style.fontSize = "30px";
+            }
+        }
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+        // functions to show or hide the result of the form
+        function hideResult() {
+            document.getElementById("rectangle").style.display = "none";
+            document.getElementById("finalResult").style.display = "none";
+            document.getElementById("circle").style.display = "none";
+        }
+
+
+        function showResult() {
+            document.getElementById("rectangle").style.display = "block";
+            document.getElementById("finalResult").style.display = "block";
+            document.getElementById("circle").style.display = "block";
+        }
+
+        // function to well fill the form
+        function submitForm() {
+
+
+
+            var newHeight = document.getElementById("height").value
+            var newWeight = document.getElementById("weight").value
+            var newAge = document.getElementById("age").value
+            var newGenre = document.getElementById("genre")
+            var newActivity = document.getElementById("sport")
+            var newQuantity = document.getElementById("quantity").value
+
+            if (newHeight != "" && newWeight != "" && newAge != "" && newGenre != "" && newActivity != "" && newQuantity != "") {
+                showResult();
+                calculate(newHeight, newWeight, newAge, newGenre, newActivity, newQuantity);
+            }
+			// the user need to fill the form
+			else {
+                alert("Fill out all the form please!")
+            }
+        }
+
+        //function to calculate the kcal of the user
+        function calculate(newHeight, newWeight, newAge, newGenre, newActivity, newQuantity) {
+
+            var x = 0;
+            var y = 0;
+
+            if (newGenre.value == 1) {
+                x = (655 + (9.56 * newWeight) + (1.85 * newHeight) - (4.67 * newAge));
+
+                console.log(x)
+
+                if (newActivity.value == 1) {
+                    x *= 1, 2;
+                } else if (newActivity.value == 2) {
+                    x *= 1, 375;
+                } else if (newActivity.value == 3) {
+                    x *= 1, 55;
+                } else {
+                    x *= 1, 725;
+                }
+
+            } else {
+                x = (65.5 + (13.75 * newWeight) + (5 * newHeight) - (6.77 * newAge));
+
+                if (newActivity.value == 1) {
+                    x *= 1, 2;
+                } else if (newActivity.value == 2) {
+                    x *= 1, 375;
+                } else if (newActivity.value == 3) {
+                    x *= 1, 55;
+                } else {
+                    x *= 1, 725;
+                }
+
+            }
+
+            var a = 0;
+            var b = 0;
+
+            a = ((5 / 100) * x);
+            a = a.toFixed(0);
+            b = ((10 / 100) * x);
+            b = b.toFixed(0);
+            x = x.toFixed(0);
+
+            document.getElementById("cinq").innerHTML = a;
+            document.getElementById("dix").innerHTML = b;
+
+            document.getElementById("demo").innerHTML = x;
+
+            y = newQuantity * 92;
+            y = y.toFixed(0);
+            document.getElementById("demo1").innerHTML = y;
+
+        }
+        // functions for the tapioca pearl game
+        function showBubble() {
+            bobaCounter();
+            document.getElementById("circle").style.display = "none";
+        }
+
+        function bobaCounter() {
+            if (typeof (Storage) !== "undefined") {
+                if (sessionStorage.clickcount && sessionStorage.clickcount < 5) {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+                    document.getElementById("resultat").innerHTML = "You have found " + sessionStorage.clickcount + " boba pearl(s) out of 5.";
+                    if (sessionStorage.clickcount == 5) {
+                        document.getElementById("resultat1").innerHTML = "You have found all you boba! The secret code is: emit";
+                    }
+                } else {
+                    sessionStorage.clickcount = 0;
+                }
+            } else {
+                document.getElementById("resultat").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+
+
+    </script>
+</body>

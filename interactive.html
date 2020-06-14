@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <link rel="icon" href="iconbubbletime.png">
+
+</head>
+<title>Bubble Time</title>
+<style>
+    @import "compass/css3";
+
+    @import "compass/reset/utilities";
+
+    @include global-reset;
+
+    @import url(https://fonts.googleapis.com/css?family=Lustria|Lato:300);
+
+    $title_font: 'Lustria', serif;
+    $base_font: 'Lato',sans-serif;
+
+    body {
+        font-family: system-ui;
+        background: rgb(255, 212, 214);
+        font-size: 20px;
+        overflow-x: hidden;
+
+    }
+
+    ul {
+        width: 100%;
+        overflow: hidden;
+
+        li {
+            position: relative;
+            cursor: pointer;
+
+            .overlay {
+                @include opacity(0.4);
+                background: #000;
+                display: blocK;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                position: absolute;
+                z-index: 8;
+
+            }
+
+            .info {
+                position: relative;
+                width: 100%;
+                z-index: 999;
+                color: #fff;
+                display: block;
+                text-align: center;
+                padding: 30px 20px 20px;
+                @include box-sizing(border-box);
+
+                h2 {
+                    font-family: $title_font;
+                    font-size: 30px;
+                    line-height: 50px;
+                }
+
+                p {
+                    font-family: $base_font;
+                    font-size: 18px;
+                    line-height: 30px;
+                    padding-bottom: 20px;
+                }
+
+                .btn {
+                    line-height: 30px;
+                    display: inline-block;
+                    padding: 0 10px;
+                    border: 1px solid #fff;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    color: #fff;
+                    font-family: $base_font;
+                    margin-bottom: 20px;
+                }
+
+                .description {
+                    display: none;
+                }
+            }
+
+            //.info
+
+            .bg-img {
+                img {
+                    position: absolute;
+                    //width: 100%;
+                    //height: auto;
+                    top: 0;
+                    min-width: 100%;
+                    min-height: 100%;
+                }
+            }
+        }
+    }
+
+    #header {
+        font-family: 'Pacifico';
+        position: absolute;
+        z-index: 1;
+        font-size: 15px;
+        background: rgb(255, 212, 214);
+        color: white;
+        position: fixed;
+        width: 99%;
+        border: solid 0.3em;
+        border-color: white;
+        top: 0%;
+        left: 0.2%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .btn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        font-family: system-ui;
+
+    }
+
+    .dropbtn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        font-family: system-ui;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 191px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        font-size: 16px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgb(255, 212, 214);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: white;
+        color: black;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+
+    .histoire {
+        background-color: rgb(255, 255, 255);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 70%;
+        margin-top: 250px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .histoire img {
+        width: 300px;
+        height: 300px;
+    }
+
+    footer {
+        padding: 3px;
+        background-color: white;
+        font-size: smaller;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    footer .m {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #Facebook,
+    #Instagram,
+    #Twitter {
+        width: 50px;
+    }
+</style>
+
+<body>
+    <div id="header">
+        <h2>Bubble Time</h2>
+        <div class="dropdown">
+            <button class="dropbtn">What is a bubble tea ?</button>
+            <div class="dropdown-content">
+                <a href="History.html">History</a>
+                <a href="atypique.html">Atypical bubble tea</a>
+                <a href="#">Where to find them?</a>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href = 'bubbletime2.0.html'">Home</button>
+        <button class="btn" onclick="window.location.href = 'recette.html'">Bubble tea recipe</button>
+    </div>
+    <div class="histoire">
+        <ul class="gallery">
+            <li>
+                <div class="overlay"></div>
+
+                <div class="info">
+
+                    <h2>Martin Benton</h2>
+                    <p>Welcome to my amazing world of photos</p>
+                    <a href="#" class="btn">See Description</a>
+
+                    <div class="description">
+                        <p>
+                            Pork belly Carles Wes Anderson semiotics, Thundercats Truffaut iPhone chambray blog normcore
+                            direct trade Pinterest gentrify. Pinterest gentrify fanny pack Truffaut, bitters brunch
+                            hella kogi craft beer readymade. Synth whatever trust fund Marfa before they sold out,
+                            chillwave lomo. Bespoke polaroid Williamsburg, jean shorts literally Etsy Banksy
+                            Intelligentsia. Organic Brooklyn shabby chic ennui semiotics, brunch Tumblr mustache
+                            Helvetica PBR&B. Literally fanny pack scenester sartorial selfies post-ironic flexitarian
+                            tattooed, pork belly hashtag Vice fingerstache squid hella.
+                        </p>
+                    </div><!-- /.description-->
+                </div>
+                <!--/.info -->
+
+                <div class="bg-img">
+                    <img src="https://unsplash.it/1000/400?image=1044">
+                </div>
+            </li>
+            <li>
+                <div class="overlay"></div>
+
+                <div class="info">
+                    <h2>Louise J. Pautz</h2>
+                    <p>Welcome to my amazing world of photos</p>
+
+                    <a href="#" class="btn">See Description</a>
+
+                    <div class="description">
+                        <p>
+                            Pork belly Carles Wes Anderson semiotics, Thundercats Truffaut iPhone chambray blog normcore
+                            direct trade Pinterest gentrify. Pinterest gentrify fanny pack Truffaut, bitters brunch
+                            hella kogi craft beer readymade. Synth whatever trust fund Marfa before they sold out,
+                            chillwave lomo. Bespoke polaroid Williamsburg, jean shorts literally Etsy Banksy
+                            Intelligentsia. Organic Brooklyn shabby chic ennui semiotics, brunch Tumblr mustache
+                            Helvetica PBR&B. Literally fanny pack scenester sartorial selfies post-ironic flexitarian
+                            tattooed, pork belly hashtag Vice fingerstache squid hella.
+                        </p>
+                    </div><!-- /.description-->
+                </div>
+                <!--/.info -->
+
+                <div class="bg-img">
+                    <img src="https://unsplash.it/1000/400?image=1014">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <footer>
+        <div class="m">
+            <p>© 2020 Bubble Time</p>
+            <p>Blondin Tahiti - Dufour Lucie <br> Projet Programmation Web <br> Efrei Paris 2020</p>
+        </div>
+        <div class="m">
+            <p>
+                <a href="Who are we.html">Who are we ?</a>
+            </p>
+            <!-- vers nos réseaux -->
+            <nav>
+                <a href=""><img src="icon_facebook.webp" alt="Facebook" id="Facebook"></a>
+                <a href=""><img src="twitter.png" alt="Twitter" id="Twitter"></a>
+                <a href=""><img src="instagram.png" alt="Instagram" id="Instagram"></a>
+            </nav>
+        </div>
+    </footer>
+    <script $(document).ready(function () {
+
+        //hide all descriptions
+        $('.description').hide();
+    
+        function showFullHeight() {
+    
+           $('.gallery li').each(function() {
+    
+               $(this).find('.btn').click(function(e){
+    
+               console.log('Botão clicado');
+              
+              e.preventDefault();
+    
+               //NO MATTER WHAT WE CLOSE ALL OPEN SLIDES
+                 $('.description').slideUp('normal');
+    
+             //IF THE NEXT SLIDE WASN'T OPEN THEN OPEN IT
+                if($(this).next().is(':hidden') == true) {
+                    
+                    //ADD THE ON CLASS TO THE BUTTON
+                    $(this).addClass('on');
+                      
+                    //OPEN THE SLIDE
+                    $(this).next().slideDown('normal');
+    
+    
+    
+                 } 
+                
+           }); //click
+          });//each
+        }//function
+    
+    
+        //load the function when the doc is ready		
+      showFullHeight();
+      
+    });</script>
+</body>

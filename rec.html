@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- importation of font -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <!-- icon of our website -->
+    <link rel="icon" href="iconbubbletime.png">
+
+</head>
+
+<!-- title of our website -->
+<title>Bubble Time</title>
+
+<!-- CSS part -->
+<style>
+    /* Conception of the body of the website */
+    body {
+        font-family: system-ui;
+        background: rgb(255, 212, 214);
+        font-size: 20px;
+
+    }
+
+    /* conception of the header */
+    #header {
+        font-family: 'Pacifico';
+        position: absolute;
+        z-index: 1;
+        font-size: 15px;
+        background: rgb(255, 212, 214);
+        color: white;
+        position: fixed;
+        width: 99%;
+        border: solid 0.3em;
+        border-color: white;
+        top: 0%;
+        left: 0.2%;
+        text-align: center;
+        /* transition when we scroll the page (scf javascript part) */
+        transition: 0.3s;
+    }
+
+    /* conception of the third buttons of the menu */
+    .btn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        font-family: system-ui;
+
+    }
+
+    /* conception of the div of the button that we can drop */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* conception of the buttons that we can drop */
+    .dropbtn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+
+    }
+
+    /* conception of the dropped buttons */
+    .dropdown-content {
+        font-family: system-ui;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 191px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    /* conception of the link of page in the dropped buttons */
+    .dropdown-content a {
+        color: black;
+        font-size: 16px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgb(255, 212, 214);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: white;
+        color: black;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+
+
+    /* conception of the footer */
+    footer {
+        padding: 3px;
+        background-color: white;
+        font-size: smaller;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    footer .m {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #Facebook,
+    #Instagram,
+    #Twitter,
+    #Mail {
+        width: 50px;
+    }
+
+
+    /* conception of the main content of the page */
+    /* blocktext is the principale div of the page, it's the container */
+    #blocktext {
+        background-color: rgb(255, 255, 255);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        width: 70%;
+        margin-top: 20%;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        font-size: 15px;
+
+    }
+
+    /* title */
+    #recommendations {
+        color: #aa97ff;
+        font-family: 'Pacifico';
+    }
+
+    h2 {
+        font-family: 'Pacifico';
+    }
+
+    /* conception of the image blocks where we can see the bubble tea shop */
+    .block {
+        display: flex;
+        text-align: center;
+    }
+
+    .contain {
+        position: relative;
+        width: 50%;
+        margin: 1%;
+    }
+
+    .picture {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: 100%;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .info {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+        margin: 0 auto;
+        max-width: 100%;
+        height: 50%;
+        overflow: auto;
+
+    }
+
+    .contain:hover .picture {
+        opacity: 0.3;
+    }
+
+    .contain:hover .info {
+        opacity: 1;
+    }
+
+    .text {
+        background-color: rgb(255, 255, 255);
+        color: black;
+        font-size: 15px;
+        padding: 14px 30px;
+    }
+
+    /* conception of the descriptions for each shop */
+    #momenttea,
+    #thealley,
+    #machimachi,
+    #xingfutang {
+        display: flex;
+        justify-content: space-around;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 30px;
+        text-align: center;
+        flex-flow: row wrap;
+        background-color: rgb(255, 212, 214);
+        color: white;
+        margin-bottom: 2%;
+    }
+
+
+    #infoshop {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* conception of the baverage that we recommend in the shop */
+    div.baverage {
+        border-style: none;
+        width: 50%;
+        height: auto;
+        margin-left: 15%;
+    }
+
+    .baverage:hover {
+        border: 1px solid rgb(255, 212, 214);
+    }
+
+    .baverage img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .legende {
+        padding: 5px;
+        text-align: center;
+        font-weight: 100;
+    }
+
+    #gallery {
+
+        padding: 0 6px;
+        float: left;
+        width: 24.99999%;
+        flex: 1 4 auto;
+        flex-wrap: row;
+    }
+
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* link of the social media of the shop */
+    a {
+        text-decoration: none;
+        color: #aa97ff;
+    }
+
+    .social {
+        flex: 2 4 auto;
+        margin-right: 10%;
+    }
+
+    #logolien {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .social img {
+        width: 50px;
+        margin-top: 10px;
+    }
+
+    /* google map */
+    iframe {
+        flex: 3 4 auto;
+        margin: 2%;
+        border: 2px solid white;
+    }
+
+    /* conception of the tapioca pearl */
+    #circle {
+      width: 25px;
+      height: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: black;
+      margin-left: 5%;
+      margin-bottom:1%;
+    }
+</style>
+
+<!-- HTML part -->
+
+<body onload="hideResult()">
+
+    <!-- header part -->
+    <div id="header">
+        <h2>Bubble Time</h2>
+        <!-- menu -->
+        <div class="dropdown">
+            <button class="dropbtn">What is a bubble tea ?</button>
+            <div class="dropdown-content">
+                <a href="History.html">History</a>
+                <a href="atypique.html">Atypical bubble tea</a>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href = 'bubbletime2.0.html'">Home</button>
+        <div class="dropdown">
+            <button class="dropbtn">Taste it !</button>
+            <div class="dropdown-content">
+                <a href="rec.html">Recommendations</a>
+                <a href="recette.html">Bubble tea recipe</a>
+                <a href="santé.html">Health</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- main content -->
+    <div id="blocktext">
+        <!-- title -->
+        <h1 id="">Our <span id="recommendations">Recommendations</span></h1>
+        <p>We have tried many types of Bubble Teas in many shops, this is why we have chosen for you our favorites among
+            them, to guide you into
+            into this new world. <b>Hover</b> and <b>click</b> on the pictures to know more!</p>
+        <!-- Blocks of images with the shops that we recommend -->
+        <div class="block">
+            <!-- show the description of the shop on click -->
+            <!-- Momen'tea shop -->
+            <div class="contain" onclick="showResult();">
+                <img src="momenttea.jpeg" class="picture">
+                <div class="info">
+                    <!-- link to the descriptions of the shop -->
+                    <a href="#momenttea">
+                        <div class="text">
+                            <h2>Momen'Tea</h2>
+                            <p>The first place where we tried bubble tea. There exist a large variety of bubbles and
+                                it's
+                                not very expensive.</p>
+                            <p><b>5 avenue de l'Opéra</b></p>
+                            <p><b>Forum des Halles</b></p>
+                        </div>
+                </div>
+            </div>
+            <!-- The Alley shop -->
+            <div class="contain" onclick="showResult2();">    
+                <img src="thealley.jpg" class="picture">
+                <div class="info">
+                    <a href="#thealley">
+                        <div class="text">
+                            <h2>The Alley</h2>
+                            <p>You can find there the classical brown sugar bubble tea, it is very well made and leaves
+                                you
+                                wanting for more!</p>
+                            <p><b>13 boulevard Haussmann</b></p>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <!-- Xingfutang shop -->
+            <div class="contain" onclick="showResult3();">
+                <img src="Xingfutang.jpg" class="picture">
+                <div class="info">
+                    <a href="#xingfutang">
+                        <div class="text">
+                            <h2>Xing Fu Tang</h2>
+                            <p>Number 1 in Taiwan, they have the best Brown Sugar Bubble tea.</p>
+                            <p><b>34 rue réaumur</b></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- machimachi shop -->
+            <div class="contain" onclick="showResult4();">
+                <img src="machimachi1.jpg" class="picture">
+                <div class="info">
+                    <a href="#machimachi">
+                        <div class="text">
+                            <h2>Machi Machi</h2>
+                            <p>Well known for their bottle baverage, they also have very good bubble tea!</p>
+                            <p><b>5 rue Chabanais</b></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Descrition of the shop -->
+        <!-- Momen'tea -->
+        <div id="momenttea">
+            <div>
+                <h2>Momen'Tea</h2>
+                <div id="infoshop">
+                    <!-- Phtography of the baverage to try -->
+                    <div class="gallery">
+                        <div class="baverage">
+                            <h4>Baverage to try</h4>
+                            <a target="_blank" shape="circle" href="momentteaharicotrouge.jpg">
+                                <img src="momentteaharicotrouge.jpg" alt="Red Bean">
+                            </a>
+                            <div class="legende">Hot Red Bean Bubble tea</div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <!-- Social media of the shop -->
+                    <div class="social">
+                        <h4>Follow them on social media</h4>
+                        <div id="logolien">
+                            <a href="https://www.momentea.com/">momentea.com</a></div>
+
+                        <div id="logolien">
+
+                            <img src="instagram.png" alt="instagram momen'tea">
+                            <a href="https://www.instagram.com/momentea_fr/">momentea_fr</a>
+                        </div>
+                    </div>
+                    <!-- Google Map -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d5249.45053787397!2d2.3364269681149814!3d48.86344900774706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smoment%20tea%20!5e0!3m2!1sfr!2sfr!4v1591882860661!5m2!1sfr!2sfr"
+                        width="400" height="300" frameborder="0" style="border:1;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Alley -->
+        <div id="thealley">
+            <div>
+
+                <h2>The Alley</h2>
+                <div id="infoshop">
+                    <div class="gallery">
+                        <div class="baverage">
+                            <h4>Baverage to try</h4>
+                            <a target="_blank" href="brownsuggartheallety.jpg">
+                                <img src="brownsuggartheallety.jpg" alt="Brown Sugar" width="600" height="400">
+                            </a>
+                            <div class="legende">Hot or Cold Brown Sugar Bubble tea</div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="social">
+                        <h4>Follow them on social media</h4>
+                        <div id="logolien"><a href="http://www.thealley.fr/">thealley.fr</a></div>
+
+                        <div id="logolien">
+
+                            <img src="instagram.png" alt="instagram the alley">
+                            <a href="https://www.instagram.com/thealley.paris/">thealley.paris</a>
+                        </div>
+                        <div id="logolien">
+                            <img src="icon_facebook.webp" alt="facebook the alley">
+                            <a href="https://www.facebook.com/thealleyparis/">thealleyparis</a>
+                        </div>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d5248.7138179389!2d2.3360518!3d48.8704723!3m2!1i1024!2i768!4f13.1!2m1!1sthe%20alley!5e0!3m2!1sfr!2sfr!4v1591968976279!5m2!1sfr!2sfr"
+                        width="400" height="300" frameborder="0" style="border:1;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Xing Fu Tang -->
+        <div id="xingfutang">
+            <div>
+                <h2>Xing Fu Tang</h2>
+
+                <div id="infoshop">
+                    <div class="gallery">
+                        <div class="baverage">
+                            <h4>Baverage to try</h4>
+                            <a target="_blank" href="xingfutangbrownsugar.jpg">
+                                <img src="xingfutangbrownsugar.jpg" alt="Brown Sugar Xing Fu tang" width="600"
+                                    height="400">
+                            </a>
+                            <div class="legende">Brown Sugar Bubble tea</div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="social">
+                        <h4>Follow them on social media</h4>
+                        <div id="logolien"><a href="https://www.usaxingfutang.com/">usaxingfutang.com</a></div>
+
+                        <div id="logolien">
+
+                            <img src="instagram.png" alt="instagram xing fu tang">
+                            <a href="https://www.instagram.com/xingfutang_paris/?hl=fr">xingfutang_paris</a>
+                        </div>
+
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.6240108550082!2d2.355562351453139!3d48.865379708066676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f7804d2874d%3A0x66c18be07b9b482c!2zWGluZyBGdSBUYW5nIDNlbWUg5bm456aP5aCC!5e0!3m2!1sfr!2sfr!4v1591971820475!5m2!1sfr!2sfr"
+                        width="400" height="300" frameborder="0" style="border:1;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Machimachi -->
+        <div id="machimachi">
+            <div>
+                <h2>Machi Machi</h2>
+                <div id="infoshop">
+                    <div class="gallery">
+                        <div class="baverage">
+                            <h4>Baverage to try</h4>
+                            <a target="_blank" href="machi.jpg">
+                                <img src="machi.jpg" alt="creme brulee" width="600" height="400">
+                            </a>
+                            <div class="legende">Crème brulée Bubble tea with Tapioca pearls</div>
+                        </div>
+
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="social">
+                        <h4>Follow them on social media</h4>
+                        <div id="logolien"><a href="https://www.machimachi.fr/">machimachi.fr</a></div>
+
+                        <div id="logolien">
+
+                            <img src="instagram.png" alt="instagram machi machi">
+                            <a href="https://www.instagram.com/machimachi__paris/?hl=fr">machimachi_paris</a>
+                        </div>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d656.1298505284179!2d2.3364343026876893!3d48.86737423614729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f199cf9418d%3A0x657fb927b744ef7!2smachi%20machi%20Paris!5e0!3m2!1sfr!2sfr!4v1591971783068!5m2!1sfr!2sfr"
+                        width="400" height="300" frameborder="0" style="border:1;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+                </div>
+
+            </div>
+            <div id="circle" onclick="showBubble()"></div>
+        </div>
+        <div id="resultat"></div>
+        <div id="resultat1"></div>
+    </div>
+
+
+
+<!-- Footer -->
+    <footer>
+        <!-- div of class "m" are the columns of the footer -->
+        <div class="m">
+            <p>© 2020 Bubble Time</p>
+            <p>Blondin Tahiti - Dufour Lucie <br> Projet Programmation Web <br> Efrei Paris 2020</p>
+        </div>
+        <div class="m">
+            <!-- link to the page "qui sommes nous" -->
+            <p>
+                <a href="Who are we.html">Who are we ?</a>
+            </p>
+            <!-- Our social media-->
+            <nav>
+                <a href=""><img src="icon_facebook.webp" alt="Facebook" id="Facebook"></a>
+                <a href=""><img src="twitter.png" alt="Twitter" id="Twitter"></a>
+                <a href=""><img src="instagram.png" alt="Instagram" id="Instagram"></a>
+                <a href="mailto:bubbletime@gmail.com"><img src="Circle-icons-mail.png" alt="mail" id="Mail"></a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Javascript part -->
+    <script>
+        // Effect on the header 
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("header").style.fontSize = "15px";
+            } else {
+                document.getElementById("header").style.fontSize = "30px";
+            }
+        }
+
+        // Functions to hide and show the description of the shop
+        function hideResult() {
+            document.getElementById("momenttea").style.display = "none";
+            document.getElementById("thealley").style.display = "none";
+            document.getElementById("xingfutang").style.display = "none";
+            document.getElementById("machimachi").style.display = "none";
+        }
+
+
+        function showResult() {
+            document.getElementById("momenttea").style.display = "block";
+            document.getElementById("thealley").style.display = "none";
+            document.getElementById("xingfutang").style.display = "none";
+            document.getElementById("machimachi").style.display = "none";
+        }
+
+        function showResult2() {
+            document.getElementById("momenttea").style.display = "none";
+            document.getElementById("thealley").style.display = "block";
+            document.getElementById("xingfutang").style.display = "none";
+            document.getElementById("machimachi").style.display = "none";
+        }
+        function showResult3() {
+            document.getElementById("momenttea").style.display = "none";
+            document.getElementById("thealley").style.display = "none";
+            document.getElementById("xingfutang").style.display = "block";
+            document.getElementById("machimachi").style.display = "none";
+        }
+        function showResult4() {
+            document.getElementById("momenttea").style.display = "none";
+            document.getElementById("thealley").style.display = "none";
+            document.getElementById("xingfutang").style.display = "none";
+            document.getElementById("machimachi").style.display = "block";
+        }
+
+        // functions for the game
+        function showBubble() {
+			bobaCounter();
+			document.getElementById("circle").style.display = "none";
+		}
+
+		function bobaCounter() {
+  			if (typeof(Storage) !== "undefined") {
+    				if (sessionStorage.clickcount && sessionStorage.clickcount<5) {
+      					sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+      					document.getElementById("resultat").innerHTML = "You have found " + sessionStorage.clickcount + " boba pearl(s) out of 5.";
+					if(sessionStorage.clickcount==5) {
+						 document.getElementById("resultat1").innerHTML = "You have found all you boba! The secret code is: emit";
+					}
+    				} else {
+      					sessionStorage.clickcount = 0;
+    				}
+  			} else {
+    				document.getElementById("resultat").innerHTML = "Sorry, your browser does not support web storage...";
+  			}
+		}
+
+    </script>
+</body>

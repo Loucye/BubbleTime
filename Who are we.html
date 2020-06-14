@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- importation of font -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <!-- icon of our website -->
+    <link rel="icon" href="iconbubbletime.png">
+
+</head>
+<!-- title of our website -->
+<title>Bubble Time</title>
+
+
+<!-- CSS part -->
+<style>
+    /* Conception of the body of the website */
+    body {
+        font-family: system-ui;
+        background: rgb(255, 212, 214);
+        display: block;
+        font-size: 20px;
+    }
+
+
+    /* conception of the header */
+    #header {
+        font-family: 'Pacifico';
+        position: absolute;
+        z-index: 1;
+        font-size: 15px;
+        background: rgb(255, 212, 214);
+        color: white;
+        position: fixed;
+        width: 99%;
+        border: solid 0.3em;
+        border-color: white;
+        top: 0%;
+        left: 0.2%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+
+    /* conception of the third buttons of the menu */
+    .btn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        font-family: system-ui;
+
+    }
+
+    /* conception of the div of the button that we can drop */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* conception of the buttons that we can drop */
+    .dropbtn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+
+    }
+
+    /* conception of the dropped buttons */
+    .dropdown-content {
+        font-family: system-ui;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 191px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    /* conception of the link of page in the dropped buttons */
+    .dropdown-content a {
+        color: black;
+        font-size: 16px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgb(255, 212, 214);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: white;
+        color: black;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+
+    /* conception of the main content of the page */
+    /* block is the principale div of the page, it's the container */
+    .block {
+        background-color: rgb(255, 255, 255);
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 250px;
+        margin-bottom: 10px;
+        width: 70%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+
+    .presentation {
+        display: flex;
+        text-align: center;
+        justify-content: space-evenly;
+    }
+
+    #team {
+        color: rgb(255, 212, 214);
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    .block img {
+        padding: 7px;
+        border: 5px solid rgb(255, 212, 214);
+        border-radius: 50%;
+    }
+
+    h4 {
+        color: rgb(255, 212, 214);
+    }
+
+    .Lucie p,
+    .Tahiti p {
+        text-align: left;
+    }
+
+
+    /* conception of the footer */
+    footer {
+        padding: 3px;
+        background-color: white;
+        font-size: smaller;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    footer .m {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #Facebook,
+    #Instagram,
+    #Twitter,
+    #Mail {
+        width: 50px;
+    }
+</style>
+
+<body>
+    <!-- header part -->
+    <div id="header">
+        <h2>Bubble Time</h2>
+        <!-- menu -->
+        <div class="dropdown">
+            <button class="dropbtn">What is a bubble tea ?</button>
+            <div class="dropdown-content">
+                <a href="History.html">History</a>
+                <a href="atypique.html">Atypical bubble tea</a>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href = 'bubbletime2.0.html'">Home</button>
+        <div class="dropdown">
+            <button class="dropbtn">Taste it !</button>
+            <div class="dropdown-content">
+                <a href="rec.html">Recommendations</a>
+                <a href="recette.html">Bubble tea recipe</a>
+                <a href="santé.html">Health</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- main part -->
+    <div class="block">
+        <h1>Our<span id="team"> team</span> : </h1>
+        <div class="presentation">
+            <!-- presentation of Lucie -->
+            <div class="Lucie">
+                <img src="ppLucie.png" alt="Lucie Dufour">
+                <h3>Lucie Dufour</h3>
+                <h4><em>Hapiness is boba tea and catching up</em></h4>
+                <p>Passionate of bubble tea, dream to test all the varieties that exist in the world.</p>
+                <p>For the project : History, Recipe, Who are we, recommendations pages, footer section.</p>
+            </div>
+
+            <!-- presentation of Tahiti -->
+            <div class="Tahiti">
+                <img src="ppTahiti.png" alt="Tahiti Blondin">
+                <h3>Tahiti Blondin</h3>
+                <h4><em>Today I'd like to sit and sip boba tea and forget the world a bit</em></h4>
+                <p>In relationship with boba tea.</p>
+                <p>For the project : Home, Atypical, recommendations, health pages, header section.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <!-- div of class "m" are the columns of the footer -->
+        <div class="m">
+            <p>© 2020 Bubble Time</p>
+            <p>Blondin Tahiti - Dufour Lucie <br> Projet Programmation Web <br> Efrei Paris 2020</p>
+        </div>
+        <div class="m">
+            <!-- link to the page "qui sommes nous" -->
+            <p>
+                <a href="Who are we.html">Who are we ?</a>
+            </p>
+            <!-- Our social media-->
+            <nav>
+                <a href=""><img src="icon_facebook.webp" alt="Facebook" id="Facebook"></a>
+                <a href=""><img src="twitter.png" alt="Twitter" id="Twitter"></a>
+                <a href=""><img src="instagram.png" alt="Instagram" id="Instagram"></a>
+                <a href="mailto:bubbletime@gmail.com"><img src="Circle-icons-mail.png" alt="mail" id="Mail"></a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Javascript part -->
+    <script>
+        // Effect on the header 
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("header").style.fontSize = "15px";
+            } else {
+                document.getElementById("header").style.fontSize = "30px";
+            }
+        }
+    </script>
+</body>

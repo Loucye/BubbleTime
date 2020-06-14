@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<title>Bubble Time</title>
+
+<head>
+    <!-- importation of font -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- icon of our website -->
+    <link rel="icon" href="iconbubbletime.png">
+</head>
+<!-- title of our website -->
+<title>Bubble Time</title>
+<style>
+    body,
+    html {
+        height: 100%;
+    }
+
+    /* bacjground pictures */
+    .parallax {
+        background-image: url('bubbletea1.jpg');
+
+        height: 90%;
+
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+    .parallax2 {
+        background-image: url('bubbletea4.jpg');
+
+        height: 50%;
+
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .parallax3 {
+        background-image: url('bubbletea5.jpg');
+
+        height: 50%;
+        width: 100%;
+
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    body {
+        font-family: system-ui;
+    }
+
+    /* result of the tapioca pearl game */
+    #congrats {
+        background: rgb(255, 212, 214);
+    }
+
+    /* header */
+    #header {
+        font-family: 'Pacifico';
+        position: absolute;
+        z-index: 1;
+        font-size: 15px;
+        background: rgb(255, 212, 214);
+        color: white;
+        position: fixed;
+        width: 99%;
+        border: solid 0.3em;
+        border-color: white;
+        top: 0%;
+        left: 0.2%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    /* menu */
+    .btn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        font-family: system-ui;
+
+    }
+
+    .dropbtn {
+        background-color: rgb(255, 212, 214);
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        font-family: system-ui;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 191px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        font-size: 16px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgb(255, 212, 214);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: white;
+        color: black;
+    }
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+
+    /* footer */
+    footer {
+        padding: 3px;
+        background-color: white;
+        font-size: smaller;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    footer .m {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #Facebook,
+    #Instagram,
+    #Twitter,
+    #Mail {
+        width: 50px;
+    }
+
+    /* configuration of the block text */
+    #one {
+        padding: 25px;
+        background-color: rgb(255, 212, 214);
+    }
+
+    #oneone {
+        height: 50%;
+        border: solid 0.1em;
+        border-color: white;
+        color: white;
+        padding: 20px;
+        background-color: rgb(255, 212, 214);
+        font-size: 15px;
+        text-align: center;
+    }
+
+    /* tapioca pearl */
+    #circle {
+        width: 25px;
+        height: 25px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        background: black;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* configuration of the form to put the result of the tapioca pearl */
+    #resultat,
+    #resultat1 {
+        color: black;
+    }
+
+    h1 {
+        color: white;
+        font-family: 'Pacifico';
+        text-align: center;
+    }
+
+    input {
+        width: 120px;
+        height: 40px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 0;
+        margin: 10px;
+        box-shadow: 3px 3px 2px 1px whitesmoke;
+    }
+
+
+    input:invalid {
+        box-shadow: 3px 3px 2px 1px #E6A99F;
+        caret-color: red;
+    }
+
+
+    #validation-txt {
+        color: red;
+        font-size: 18px;
+        width: 300px;
+    }
+
+    #buttonValidation {
+        box-shadow: 3px 3px 2px 1px #E5CAAF;
+        text-transform: uppercase;
+        background: white;
+        border-radius: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    #buttonValidation:hover {
+        background: #E5CAAF;
+        font-weight: bold;
+
+    }
+</style>
+
+<body onload="hideResult()">
+
+    <!-- header part -->
+    <div id="header">
+        <h2>Bubble Time</h2>
+        <!-- menu -->
+        <div class="dropdown">
+            <button class="dropbtn">What is a bubble tea ?</button>
+            <div class="dropdown-content">
+                <a href="History.html">History</a>
+                <a href="atypique.html">Atypical bubble tea</a>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href = 'bubbletime2.0.html'">Home</button>
+        <div class="dropdown">
+            <button class="dropbtn">Taste it !</button>
+            <div class="dropdown-content">
+                <a href="rec.html">Recommendations</a>
+                <a href="recette.html">Bubble tea recipe</a>
+                <a href="santé.html">Health</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <h2>Bubble time social media</h2>
+    </div>
+
+    <!-- background pictures -->
+    <div class="parallax"></div>
+    <!-- text -->
+    <div id="one">
+        <div id="oneone">
+            <h1>Welcome</h1>
+            <p>Welcome to <b>Bubble Time</b> a site for bubble tea lovers or just for the curious.
+                You will find here <b>recipes</b> to do your own bubble tea, some <b>history</b> on this popular trend,
+                information
+                for your health as well as a map to find the best bubble tea in town !</p>
+        </div>
+    </div>
+
+    <div class="parallax2"></div>
+
+    <div id="one">
+        <div id="oneone">
+            <h1>What this website is about?</h1>
+            <p>If you wish to know more about bubble tea and how it came to be, we have a page <b>History</b> that will
+                tell you all you need to know about this popular trend,
+                we can also show you the most atypical forms in which bubble tea can be eaten in our page <b>Atypical
+                    Bubble Tea</b> </p>
+        </div>
+    </div>
+
+    <div class="parallax3"></div>
+    <!-- third text block with the tapioca pearl game -->
+    <div id="one">
+        <div id="oneone">
+            <h1>A little game?</h1>
+            <p>At the origin of this website there are two students, Lucie Dufour and Tahiti Blondin,
+                if you wish to know more about us and why we created this website you can go on the page <b>About us</b>
+            </p>
+            <p>A little game? You can try to find all the tapioca pearls that we hid in the different pages of this
+                website!
+                To start it's easy you can click on any of the tapioca pearl to start and find the others. Here's one :
+            </p>
+            <div id="circle" onclick="showBubble()"></div>
+            <div id="resultat"></div>
+            <div id="resultat1"></div>
+            <p>When done you will be given the secret word to enter down here :</p>
+            <input type="text" id="pass" name="password">
+
+            <input type="button" id="buttonValidation" value="Calculate" onclick="Password()" />
+
+
+            <div id="resultat2"></div>
+            <div id="congrats">Thank you for taking the time to see our website! We hope it brought you new information
+                and that you found it useful!</div>
+        </div>
+    </div>
+    </div>
+    <!-- footer -->
+    <footer>
+        <div class="m">
+            <p>© 2020 Bubble Time</p>
+            <p>Blondin Tahiti - Dufour Lucie <br> Projet Programmation Web <br> Efrei Paris 2020</p>
+        </div>
+        <div class="m">
+            <p>
+                <a href="Who are we.html">Who are we ?</a>
+            </p>
+            <!-- vers nos réseaux -->
+            <nav>
+                <a href=""><img src="icon_facebook.webp" alt="Facebook" id="Facebook"></a>
+                <a href=""><img src="twitter.png" alt="Twitter" id="Twitter"></a>
+                <a href=""><img src="instagram.png" alt="Instagram" id="Instagram"></a>
+                <a href="mailto:bubbletime@gmail.com"><img src="Circle-icons-mail.png" alt="mail" id="Mail"></a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // animation on the header
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("header").style.fontSize = "15px";
+            } else {
+                document.getElementById("header").style.fontSize = "30px";
+            }
+        }
+        // functions of the tapioca pearl game
+        function showBubble() {
+            bobaCounter();
+            document.getElementById("circle").style.display = "none";
+        }
+
+        function bobaCounter() {
+            if (typeof (Storage) !== "undefined") {
+                if (sessionStorage.clickcount && sessionStorage.clickcount < 5) {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+                    document.getElementById("resultat").innerHTML = "You have found " + sessionStorage.clickcount + " boba pearl(s) out of 5.";
+                    if (sessionStorage.clickcount == 5) {
+                        document.getElementById("resultat1").innerHTML = "You have found all you boba! The secret code is: emit";
+                    }
+                } else {
+                    sessionStorage.clickcount = 0;
+                }
+            } else {
+                document.getElementById("resultat").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+        function hideResult() {
+            document.getElementById("congrats").style.display = "none";
+        }
+
+
+        function showResult() {
+            document.getElementById("congrats").style.display = "block";
+        }
+
+
+        function Password() {
+            var passwordInput = document.getElementById('pass').value
+            console.log(passwordInput)
+            if (passwordInput == "emit") {
+                showResult();
+                document.getElementById("resultat2").style.display = "none";
+            }
+            else {
+                document.getElementById("resultat2").innerHTML = "Try again";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
